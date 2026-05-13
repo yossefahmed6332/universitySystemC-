@@ -1,0 +1,15 @@
+public class Adress
+{
+    private string city;
+    private string street;
+    private string buildingNumber;
+    private string postalCode;
+
+    public Adress(string city, string street, string buildingNumber, string postalCode)
+    {
+        this.city = city;
+        this.street = street;
+        this.buildingNumber = buildingNumber;
+        this.postalCode = postalCode;
+    }
+}
