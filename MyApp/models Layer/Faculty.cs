@@ -14,4 +14,10 @@ public class Faculty
         this.facultyCode = facultyCode;
         faculties.Add(this);
     }
+
+    //setters and getters
+    public string FacultyName { get => facultyName; set => facultyName = value; }
+    public string FacultyCode { get => facultyCode; set => facultyCode = value; }
+    public List<Department> Departments { get => departments; set => departments = value; }
+    
 }

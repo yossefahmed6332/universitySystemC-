@@ -18,4 +18,10 @@ public class Department
         this.teachers = new List<Teacher>();
         departments.Add(this);
     }
+    //setters and getters
+    public string DepartmentName { get => departmentName; set => departmentName = value; }
+    public string DepartmentCode { get => departmentCode; set => departmentCode = value; }
+    public List<Course> Courses { get => courses; set => courses = value; }
+    public List<Teacher> Teachers { get => teachers; set => teachers = value; }
+    
 }

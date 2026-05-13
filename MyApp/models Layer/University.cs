@@ -16,4 +16,10 @@ public class University
         universities.Add(this);
 
     }
+
+    //setters and getters
+    public string UniversityName { get => universityName; set => universityName = value; }
+    public string UniversityCode { get => universityCode; set => universityCode = value; }
+    public List<Faculty> Faculties { get => faculties; set => faculties = value; }
+    
 }

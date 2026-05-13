@@ -12,4 +12,6 @@ public class Employee: User
         this.salaryPerHour = salaryPerHour;
         this.hoursOfWork = hoursOfWork;
     }
+
+    
 }

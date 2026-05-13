@@ -10,4 +10,8 @@ public class Cleaner: Employee
         this.Location = location;
         cleaners.Add(this);
     }
+    //setters and getters
+    public Location Location1 { get => Location; set =>
+        Location = value; }
+        
 }

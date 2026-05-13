@@ -15,4 +15,10 @@ public class Course
         this.department = department;
         courses.Add(this);
     }
+    //setters and getters
+    public string CourseName { get => courseName; set => courseName = value; }
+    public string CourseCode { get => courseCode; set => courseCode = value; }
+    public int CreditHours { get => creditHours; set => creditHours = value; }
+    public Department Department { get => department; set => department = value; }
+    
 }

@@ -16,4 +16,9 @@ public class Teacher: Employee
         teachers.Add(this);
     }
 
+    //setters and getters
+    public List<Course> Courses { get => courses; set => courses = value; }
+    public string OfficeNumber { get => officeNumber; set => officeNumber = value; }
+    public string Role { get => role; set => role = value; }
+
 }
