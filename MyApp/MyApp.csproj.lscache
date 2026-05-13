@@ -58,8 +58,7 @@ obj/Debug/net10.0/
  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
  MyApp.AssemblyInfo.cs
  MyApp.GlobalUsings.g.cs
-Person.cs
-Program.cs
+User.CS
 
 [metadataReferences]
 <DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.8/ref/net10.0/
