@@ -1,10 +1,10 @@
-using System.Runtime.InteropServices;
-
 public class Teacher: Employee
 {
     private List <Course> courses;
     private string officeNumber;
     private string role;
+
+    private static List <Teacher> teachers = new List<Teacher>();
 
     //constructor
     public Teacher(string id, string name, string email, string password, string phoneNumber, Adress address, double salaryPerHour, string hoursOfWork, List<Course> courses, string officeNumber, string role)
@@ -13,6 +13,7 @@ public class Teacher: Employee
         this.courses = courses;
         this.officeNumber = officeNumber;
         this.role = role;
+        teachers.Add(this);
     }
-    
+
 }
