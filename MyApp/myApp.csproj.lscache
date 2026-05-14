@@ -65,14 +65,16 @@ models Layer/
  Location.cs
  Student.cs
  Teacher.cs
- University.cs
  User.cs
 obj/Debug/net10.0/
  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
  myApp.AssemblyInfo.cs
  myApp.GlobalUsings.g.cs
 Program.cs
-serviceLayer.cs/AdminService.cs
+serviceLayer.cs/
+ IAdminService.cs
+ IStudentService.cs
+ ITeacherService.cs
 
 [metadataReferences]
 <DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.8/ref/net10.0/
