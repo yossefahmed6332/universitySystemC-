@@ -11,7 +11,7 @@ public class Student: User
 
     private static List <Student> students = new List<Student>();
     //constructor
-    public Student(string id, string name, string email, string password, string phoneNumber, Adress address, double GPA, List<Course> courses, Department department, List<string> grades)
+    public Student(string id, string name, string email, string password, string phoneNumber, Address address, double GPA, List<Course> courses, Department department, List<string> grades)
         : base(id, name, email, password, phoneNumber, address)
     {
         this.GPA = GPA;
@@ -21,9 +21,17 @@ public class Student: User
         students.Add(this);
     }
     //setters and getters
-    public double GPA1 { get => GPA; set => GPA = value; }
-    public List<Course> Courses { get => courses; set => courses = value; }
-    public Department Department { get => department; set => department = value; }
-    public List<string> Grades { get => grades; set => grades = value; }
+    public double GPA1 { 
+        get => GPA; set => GPA = value; 
+        }
+    public List<Course> Courses {
+         get => courses; set => courses = value;
+          }
+    public Department Department { 
+        get => department; set => department = value;
+         }
+    public List<string> Grades { 
+        get => grades; set => grades = value;
+         }
     
 }

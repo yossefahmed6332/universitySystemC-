@@ -6,7 +6,7 @@ public class Employee: User
     
 
     //constructor
-    public Employee(string id, string name, string email, string password, string phoneNumber, Adress address, double salaryPerHour, string hoursOfWork)
+    public Employee(string id, string name, string email, string password, string phoneNumber, Address address, double salaryPerHour, string hoursOfWork)
         : base(id, name, email, password, phoneNumber, address)
     {
         this.salaryPerHour = salaryPerHour;

@@ -12,6 +12,7 @@ public class Faculty
     {
         this.facultyName = facultyName;
         this.facultyCode = facultyCode;
+        this.departments = new List<Department>();
         faculties.Add(this);
     }
 

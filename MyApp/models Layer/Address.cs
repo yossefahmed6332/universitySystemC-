@@ -1,21 +1,21 @@
 using System.Runtime.CompilerServices;
 
-public class Adress
+public class Address
 {
     private string country;
     private string city;
     private string street;
     private string buildingNumber;
     private string postalCode;
-    private static List <Adress> adresses = new List<Adress>();
-    public Adress(string country, string city, string street, string buildingNumber, string postalCode)
+    private static List <Address> addresses = new List<Address>();
+    public Address(string country, string city, string street, string buildingNumber, string postalCode)
     {
         this.country = country;
         this.city = city;
         this.street = street;
         this.buildingNumber = buildingNumber;
         this.postalCode = postalCode;
-        adresses.Add(this);
+        addresses.Add(this);
     }
 
     //setters and getters
@@ -24,5 +24,7 @@ public class Adress
     public string Street { get => street; set => street = value; }
     public string BuildingNumber { get => buildingNumber; set => buildingNumber = value; }
     public string PostalCode { get => postalCode; set => postalCode = value; }
+
+    
     
 }

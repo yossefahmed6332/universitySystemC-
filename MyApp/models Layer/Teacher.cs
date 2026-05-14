@@ -7,7 +7,7 @@ public class Teacher: Employee
     private static List <Teacher> teachers = new List<Teacher>();
 
     //constructor
-    public Teacher(string id, string name, string email, string password, string phoneNumber, Adress address, double salaryPerHour, string hoursOfWork, List<Course> courses, string officeNumber, string role)
+    public Teacher(string id, string name, string email, string password, string phoneNumber, Address address, double salaryPerHour, string hoursOfWork, List<Course> courses, string officeNumber, string role)
         : base(id, name, email, password, phoneNumber, address, salaryPerHour, hoursOfWork)
     {
         this.courses = courses;
@@ -17,8 +17,27 @@ public class Teacher: Employee
     }
 
     //setters and getters
-    public List<Course> Courses { get => courses; set => courses = value; }
-    public string OfficeNumber { get => officeNumber; set => officeNumber = value; }
-    public string Role { get => role; set => role = value; }
+    public List<Course> Courses 
+    {
+         get => courses; set => courses = value; 
+         }
+    public string OfficeNumber { 
+        get => officeNumber; set => officeNumber = value; 
+        }
+    public string Role {
+         get => role; set => role = value;
+          }
+
+    //add and remove courses
+    public void addCourse(Course course)
+    {
+        courses.Add(course);
+    }
+    public void removeCourse (Course course)
+    {
+        courses.Remove(course);
+    }
+
+
 
 }
