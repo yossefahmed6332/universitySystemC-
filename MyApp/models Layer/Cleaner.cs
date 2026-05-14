@@ -13,5 +13,6 @@ public class Cleaner: Employee
     //setters and getters
     public Location Location1 { get => Location; set =>
         Location = value; }
-        
+    
+    public static List<Cleaner> Cleaners { get => cleaners; set => cleaners = value; }
 }

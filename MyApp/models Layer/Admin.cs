@@ -10,5 +10,7 @@ public class Admin: User
         admins.Add(this);
     }
     
+    public static List<Admin> Admins { get => admins; set => admins = value; }
+    
 
 }

@@ -23,5 +23,6 @@ public class Department
     public string DepartmentCode { get => departmentCode; set => departmentCode = value; }
     public List<Course> Courses { get => courses; set => courses = value; }
     public List<Teacher> Teachers { get => teachers; set => teachers = value; }
+    public static List<Department> Departments { get => departments; set => departments = value; }
     
 }

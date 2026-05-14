@@ -20,5 +20,7 @@ public class Course
     public string CourseCode { get => courseCode; set => courseCode = value; }
     public int CreditHours { get => creditHours; set => creditHours = value; }
     public Department Department { get => department; set => department = value; }
+
+    public static List<Course> Courses { get => courses; set => courses = value; }
     
 }

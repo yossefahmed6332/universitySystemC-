@@ -37,7 +37,7 @@ public class Teacher: Employee
     {
         courses.Remove(course);
     }
-
+    public static List<Teacher> Teachers { get => teachers; set => teachers = value; }
 
 
 }

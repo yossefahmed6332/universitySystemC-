@@ -33,5 +33,6 @@ public class Student: User
     public List<string> Grades { 
         get => grades; set => grades = value;
          }
+    public static List<Student> Students { get => students; set => students = value; }
     
 }
