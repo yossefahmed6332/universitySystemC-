@@ -6,6 +6,7 @@ public class Faculty
     private List<Department> departments;
 
     private static List <Faculty> faculties = new List<Faculty>();
+    private static List<string> IDList = new List<string>();
 
     //constructor
     public Faculty(string facultyName, string facultyCode)
@@ -22,5 +23,8 @@ public class Faculty
     public List<Department> Departments { get => departments; set => departments = value; }
 
     public static List<Faculty> Faculties { get => faculties; set => faculties = value; }
+    public static List<string> IDList1 { get => IDList; set => IDList = value; }
+
+
     
 }
