@@ -92,8 +92,11 @@ public class AdminService
     {
         int index = Course.courses.FindIndex(c => c.Id == courseID);
         Student student=student.students.Find(s => s.Id == studentID);
-        student.
+        if (index != -1 && student != null)
+        {
+            student.grades[index] = grade;
+            Console.WriteLine($"Grade {grade} assigned to student {student.Name} for course {Course.courses[index].CourseName} successfully.");
+        }
     }
-
 
 }
