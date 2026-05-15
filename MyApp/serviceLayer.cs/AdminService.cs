@@ -28,7 +28,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID == id);
+            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID1 == id);
             if (admin == null)
             {
                 throw new Exception("Admin not found");
@@ -45,7 +45,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID == id);
+            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID1 == id);
             if (admin == null)
             {
                 throw new Exception("Admin not found");
@@ -63,7 +63,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID == id);
+            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID1 == id);
             if (admin == null)
             {
                 throw new Exception("Admin not found");
@@ -81,7 +81,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID == id);
+            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID1 == id);
             if (admin == null)
             {
                 throw new Exception("Admin not found");
@@ -104,7 +104,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID == id);
+            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID1 == id);
             if (admin == null)
             {
                 throw new Exception("Admin not found");
@@ -130,7 +130,23 @@ public class AdminService : IAdminService
         }
         foreach (Admin admin in Admin.Admins)
         {
-            Console.WriteLine($"ID: {admin.ID}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}, Address: {admin.Address.Street}, {admin.Address.City}, {admin.Address.Country}, {admin.Address.PostalCode}, Country: {admin.Address.Country}");
+            Console.WriteLine($"ID: {admin.ID1}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}, Address: {admin.Address.Street}, {admin.Address.City}, {admin.Address.Country}, {admin.Address.PostalCode}, Country: {admin.Address.Country}");
+        }
+    }
+    public void showAdminData(string id)
+    {
+        try
+        {
+            Admin? admin = Admin.Admins.FirstOrDefault(a => a.ID1 == id);
+            if (admin == null)
+            {
+                throw new Exception("Admin not found");
+            }
+            Console.WriteLine($"ID: {admin.ID1}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}, Address: {admin.Address.Street}, {admin.Address.City}, {admin.Address.Country}, {admin.Address.PostalCode}, Country: {admin.Address.Country}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
 
@@ -246,7 +262,24 @@ public class AdminService : IAdminService
         }
         foreach (Address address in Address.Addresses)
         {
-            Console.WriteLine($"ID: {address.ID}, Street: {address.Street}, City: {address.City}, State: {address.Country}, Postal Code: {address.PostalCode}, Country: {address.Country}");
+            Console.WriteLine($"ID: {address.ID}, Street: {address.Street}, City: {address.City}, Postal Code: {address.PostalCode}, Country: {address.Country}");
+        }
+    }
+
+    public void showAddressData(string id)
+    {
+        try
+        {
+            Address? address = Address.Addresses.FirstOrDefault(a => a.ID == id);
+            if (address == null)
+            {
+                throw new Exception("Address not found");
+            }
+            Console.WriteLine($"ID: {address.ID}, Street: {address.Street}, City: {address.City}, Postal Code: {address.PostalCode}, Country: {address.Country}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
     //methods related to cleaner
@@ -439,6 +472,21 @@ public class AdminService : IAdminService
         }
     }
 
+    public void showCleanerData(string id)
+    {
+        try
+        {
+            Cleaner? cleaner = Cleaner.Cleaners.FirstOrDefault(c => c.ID == id);
+            if (cleaner == null)
+            {
+                throw new Exception("Cleaner not found");
+            }
+            Console.WriteLine($"ID: {cleaner.ID}, Name: {cleaner.Name}, Email: {cleaner.Email}, Phone Number: {cleaner.PhoneNumber}, Address: {cleaner.Address.Street}, {cleaner.Address.City}, {cleaner.Address.PostalCode}, Salary Per Hour: {cleaner.SalaryPerHour}, Hours Of Work: {cleaner.HoursOfWork}, Location: {cleaner.Location1.Building}, {cleaner.Location1.Floor}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }}
     //methods related to course 
     public void addCourse(string id, string name, int credits, string departmentID)
     {
@@ -545,6 +593,22 @@ public class AdminService : IAdminService
         {
             Console.WriteLine(ex.Message);
         }}
+        public void showCourseData(string id)
+    {
+        try
+        {
+            Course? course = Course.Courses.FirstOrDefault(c => c.ID1 == id);
+            if (course == null)
+            {
+                throw new Exception("Course not found");
+            }
+            Console.WriteLine($"ID: {course.ID1}, Name: {course.Name}, Credits: {course.CreditHours}, Department: {course.Department.name1}");      
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
     //methods related to department
     public void addDepartment(string id, string name)
     {
@@ -639,7 +703,7 @@ public class AdminService : IAdminService
             {
                 throw new Exception("Department not found");
             }
-            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -663,7 +727,7 @@ public class AdminService : IAdminService
             {
                 throw new Exception("Department not found");
             }
-            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -727,18 +791,7 @@ public class AdminService : IAdminService
         }
 
     }
-    public void showAllTeachers()
-    {
-        if (Teacher.Teachers.Count == 0)
-        {
-            Console.WriteLine("No teachers found");
-            return;
-        }
-        foreach (Teacher teacher in Teacher.Teachers)
-        {
-            Console.WriteLine($"ID: {teacher.ID}, Name: {teacher.Name}, Email: {teacher.Email}, Phone Number: {teacher.PhoneNumber}, Address: {teacher.Address.Street}, {teacher.Address.City}, {teacher.Address.Country}, {teacher.Address.PostalCode}, Salary Per Hour: {teacher.SalaryPerHour}, Hours Of Work: {teacher.HoursOfWork}, Office Number: {teacher.OfficeNumber}, Role: {teacher.Role}");
-        }
-    }
+
     public void showAllDepartments()
     {
         if (Department.Departments.Count == 0)
@@ -767,6 +820,22 @@ public class AdminService : IAdminService
         foreach (Course course in department.Courses)
         {
             Console.WriteLine($"ID: {course.ID1}, Name: {course.Name}, Credit Hours: {course.CreditHours}");
+        }
+    }
+    public void showDepartmentData(string id)
+    {
+        try
+        {
+            Department? department = Department.Departments.FirstOrDefault(d => d.ID1 == id);
+            if (department == null)
+            {
+                throw new Exception("Department not found");
+            }
+            Console.WriteLine($"ID: {department.ID1}, Name: {department.name1}, Courses: {string.Join(", ", department.Courses.Select(c => c.Name))}, Teachers: {string.Join(", ", department.Teachers.Select(t => t.Name))}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
 
@@ -896,6 +965,22 @@ public class AdminService : IAdminService
     }
 
 }
+    public void showFacultyData(string ID)
+    {
+        try
+        {
+            Faculty? faculty = Faculty.Faculties.FirstOrDefault(u => u.ID1 == ID);
+            if (faculty == null)
+            {
+                throw new Exception("Faculty not found");
+            }
+            Console.WriteLine($"ID: {faculty.ID1}, Name: {faculty.Name}, Departments: {string.Join(", ", faculty.Departments.Select(d => d.name1))}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
     
     //methods related to location
     public void AddLocation(string locationCode, string locationName, string locationType)
@@ -975,6 +1060,22 @@ public class AdminService : IAdminService
         foreach (Location location in Location.Locations)
         {
             Console.WriteLine($"ID: {location.ID1}, Name: {location.Building}, Type: {location.Floor}");
+        }
+    }
+    public void showLocationData(string locationCode)
+    {
+        try
+        {
+            Location? location = Location.Locations.FirstOrDefault(l => l.ID1 == locationCode);
+            if (location == null)
+            {
+                throw new Exception("Location not found");
+            }
+            Console.WriteLine($"ID: {location.ID1}, Name: {location.Building}, Type: {location.Floor}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
     
@@ -1187,6 +1288,22 @@ public class AdminService : IAdminService
         {
             Console.WriteLine($"ID: {student.ID}, Name: {student.Name}, Email: {student.Email}, Phone Number: {student.PhoneNumber}, Address: {student.Address.Street}, {student.Address.City}, {student.Address.Country}, {student.Address.PostalCode}, GPA: {student.GPA1}, Department: {student.Department.name1}, Courses: {string.Join(", ", student.Courses.Select(c => c.Name))}, Grades: {string.Join(", ", student.Grades)}");
         }
+    }   
+    public void showStudentData(string studentID)
+    {
+        try
+        {
+            Student? student = Student.Students.FirstOrDefault(s => s.ID == studentID);
+            if (student == null)
+            {
+                throw new Exception("Student not found");
+            }
+            Console.WriteLine($"ID: {student.ID}, Name: {student.Name}, Email: {student.Email}, Phone Number: {student.PhoneNumber}, Address: {student.Address.Street}, {student.Address.City}, {student.Address.Country}, {student.Address.PostalCode}, GPA: {student.GPA1}, Department: {student.Department.name1}, Courses: {string.Join(", ", student.Courses.Select(c => c.Name))}, Grades: {string.Join(", ", student.Grades)}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     //methods related to teacher 
@@ -1214,7 +1331,7 @@ public class AdminService : IAdminService
     {
     try
         {
-            Teacher? teacher= Teacher.Teachers.FirstOrDefault(t=>t.ID==teacherID);
+            Teacher? teacher= Teacher.Teachers.FirstOrDefault(t=>t.ID1==teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -1254,7 +1371,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -1271,7 +1388,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -1310,7 +1427,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -1327,7 +1444,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -1345,7 +1462,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -1362,7 +1479,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -1379,7 +1496,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
             if (teacher == null)
             {
                 throw new Exception("Teacher not found");
@@ -1400,13 +1517,29 @@ public class AdminService : IAdminService
         }
         foreach (Teacher teacher in Teacher.Teachers)
         {
-            Console.WriteLine($"ID: {teacher.ID}, Name: {teacher.Name}, Email: {teacher.Email}, Phone Number: {teacher.PhoneNumber}, Address: {teacher.Address.Street}, {teacher.Address.City}, {teacher.Address.Country}, {teacher.Address.PostalCode}, Salary Per Hour: {teacher.SalaryPerHour}, Hours Of Work: {teacher.HoursOfWork}, Office Number: {teacher.OfficeNumber}, Role: {teacher.Role}");
+            Console.WriteLine($"ID: {teacher.ID1}, Name: {teacher.Name}, Email: {teacher.Email}, Phone Number: {teacher.PhoneNumber}, Address: {teacher.Address.Street}, {teacher.Address.City}, {teacher.Address.Country}, {teacher.Address.PostalCode}, Salary Per Hour: {teacher.SalaryPerHour}, Hours Of Work: {teacher.HoursOfWork}, Office Number: {teacher.OfficeNumber}, Role: {teacher.Role}");
         }
     }
 
     public void showSelfData(Admin admin)//parameter is the admin that is logged in and want to see his data
     {
-        Console.WriteLine($"ID: {admin.ID}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}, Address: {admin.Address.Street}, {admin.Address.City}, {admin.Address.Country}, {admin.Address.PostalCode}");
+        Console.WriteLine($"ID: {admin.ID1}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}, Address: {admin.Address.Street}, {admin.Address.City}, {admin.Address.Country}, {admin.Address.PostalCode}");
     }
-}
+
+public void showTeacherData(string teacherID)
+    {
+        try
+        {
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID1 == teacherID);
+            if (teacher == null)
+            {
+                throw new Exception("Teacher not found");
+            }
+            Console.WriteLine($"ID: {teacher.ID1}, Name: {teacher.Name}, Email: {teacher.Email}, Phone Number: {teacher.PhoneNumber}, Address: {teacher.Address.Street}, {teacher.Address.City}, {teacher.Address.Country}, {teacher.Address.PostalCode}, Salary Per Hour: {teacher.SalaryPerHour}, Hours Of Work: {teacher.HoursOfWork}, Office Number: {teacher.OfficeNumber}, Role: {teacher.Role}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }}
 

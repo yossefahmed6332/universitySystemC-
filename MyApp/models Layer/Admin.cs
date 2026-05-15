@@ -12,7 +12,7 @@ public class Admin: User
     
     public static List<Admin> Admins { get => admins; set => admins = value; }
     //setters and getters
-    public string ID { get => id; set => id = value; }
+    public string ID1 { get => ID; set => ID = value; }
     public string Name { get => name; set => name = value; }
     public string Email { get => email; set => email = value; }
     public string Password { get => password; set => password = value; }

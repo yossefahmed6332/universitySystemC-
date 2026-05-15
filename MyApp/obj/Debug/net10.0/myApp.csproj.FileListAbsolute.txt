@@ -21,3 +21,10 @@ C:\Users\yo273\universitySystemC-\MyApp\obj\Debug\net10.0\myApp.sourcelink.json
 C:\Users\yo273\universitySystemC-\MyApp\obj\Debug\net10.0\myApp.dll
 C:\Users\yo273\universitySystemC-\MyApp\obj\Debug\net10.0\refint\myApp.dll
 C:\Users\yo273\universitySystemC-\MyApp\obj\Debug\net10.0\myApp.pdb
+C:\Users\yo273\universitySystemC-\MyApp\bin\Debug\net10.0\myApp.exe
+C:\Users\yo273\universitySystemC-\MyApp\bin\Debug\net10.0\myApp.deps.json
+C:\Users\yo273\universitySystemC-\MyApp\bin\Debug\net10.0\myApp.runtimeconfig.json
+C:\Users\yo273\universitySystemC-\MyApp\bin\Debug\net10.0\myApp.dll
+C:\Users\yo273\universitySystemC-\MyApp\bin\Debug\net10.0\myApp.pdb
+C:\Users\yo273\universitySystemC-\MyApp\obj\Debug\net10.0\myApp.genruntimeconfig.cache
+C:\Users\yo273\universitySystemC-\MyApp\obj\Debug\net10.0\ref\myApp.dll

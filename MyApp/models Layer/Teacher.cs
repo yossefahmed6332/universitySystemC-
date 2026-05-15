@@ -3,6 +3,7 @@ public class Teacher: Employee
     private List <Course> courses;
     private string officeNumber;
     private string role;
+    
 
     private static List <Teacher> teachers = new List<Teacher>();
 
@@ -28,7 +29,7 @@ public class Teacher: Employee
          get => role; set => role = value;
           }
 
-    public string ID { get => ID; set => ID = value; }
+    public string ID1 { get => ID; set => ID = value; }
     public string Name { get => name; set => name = value; }
     public string Email { get => email; set => email = value; }
     public string Password { get => password; set => password = value; }

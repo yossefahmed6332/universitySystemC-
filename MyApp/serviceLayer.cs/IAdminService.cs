@@ -8,6 +8,8 @@ public interface IAdminService
     public void changeAddress(string id, string newAddressID);
     public void RemoveAdmin(string id);
     public void showAllAdmins();
+    public void showAdminData(string ID);
+
     
     //functions related to Address 
     public void AddAddress(string id, string street, string city, string state, string postalCode,string country);
@@ -16,6 +18,8 @@ public interface IAdminService
     public void changeCity(string id, string newCity);
     public void changecountry(string id, string newCountry);
     public void changePostalCode(string id, string postalCode);
+    public void showAddressData(string id);
+
     
     public void showAllAddresses();
 
@@ -30,6 +34,7 @@ public interface IAdminService
     public void changeCleanerHoursOfWork(string id, string newHoursOfWork);
     public void changeCleanerLocation(string id, string newLocationID);
     public void showAllCleaners();
+    public void showCleanerData(string id);
 
     //function related to course 
     public void addCourse(string ID, string name, int creditHours, string department);
@@ -38,6 +43,7 @@ public interface IAdminService
     public void changeCourseCreditHours(string ID, int newCreditHours);
     public void changeCourseDepartment(string ID, string newDepartment);
     public void showAllCourses();
+    public void showCourseData(string id);
 
     //function related to department
     public void addDepartment(string departmentCode, string departmentName);
@@ -49,9 +55,10 @@ public interface IAdminService
     public void removeTeacherFromDepartment(string departmentCode, string teacherID);
     public void addCourseToDepartment(string departmentCode, string courseID);
     public void removeCourseFromDepartment(string departmentCode, string courseID);
-    public void showAllTeachers();
     public void showAllCoursesInDepartment(string departmentCode);
     public void showAllDepartments();
+    public void showDepartmentData(string ID);
+
 
     //function related to faculty
     public void addFaculty(string facultyCode, string facultyName);
@@ -61,6 +68,7 @@ public interface IAdminService
     public void addDepartmentToFaculty(string facultyCode, Department department);
     public void removeDepartmentFromFaculty(string facultyCode, Department department);
     public void showAllFaculties(string ID);
+    public void showFacultyData(string ID);
 
     //function related to location
     public void AddLocation(string locationCode, string locationName, string locationType);
@@ -68,7 +76,7 @@ public interface IAdminService
     public void changeLocationName(string locationCode, string newLocationName);
     public void changeLocationBuilding(string locationCode, string newLocationBuilding);
     public void showAllLocations();
-
+    public void showLocationData(string locationCode);
 
     //function related to student 
     public void addStudent(string id, string name, string email, string password, string phoneNumber, string departmentID, string addressID);
@@ -82,6 +90,7 @@ public interface IAdminService
     public void changeStudentDepartment(string id, string DepartmentID);
     public void changeStudentGrades(string id, List<string> newGrades);
     public void showAllStudents();
+    public void showStudentData(string id);
 
     //function related to teacher
     public void addTeacher(string id, string name, string email, string password, string phoneNumber, string addressID, double salaryPerHour, string hoursOfWork, string officeNumber, string role);
@@ -97,6 +106,7 @@ public interface IAdminService
     public void changeTeacherRole(string id, string newRole);
     public void ShowAllTeachers();
     public void showSelfData(Admin admin);
+    public void showTeacherData(string id);
 
 
 
