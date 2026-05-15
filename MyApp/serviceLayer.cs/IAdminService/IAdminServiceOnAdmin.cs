@@ -1,7 +1,7 @@
 public interface IAdminServiceOnAdmin
 {
         //functions related to admin
-    public void AddAdmin(string id, string name, string email, string password, string phoneNumber, string addressID);
+    public void addAdmin(string id, string name, string email, string password, string phoneNumber, string addressID);
     public void changePhoneNumber(string id, string newPhoneNumber);
     public void changeEmail(string id, string newEmail);
     public void changePassword(string id, string newPassword);

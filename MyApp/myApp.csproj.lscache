@@ -71,8 +71,18 @@ obj/Debug/net10.0/
  myApp.AssemblyInfo.cs
  myApp.GlobalUsings.g.cs
 Program.cs
-serviceLayer.cs/
- AdminService.cs
+serviceLayer.cs/AdminService/
+ AdminServiceOnAddress.cs
+ AdminServiceOnAdmin.cs
+ AdminServiceOnCourse.cs
+ AdminServiceOnDepartment.cs
+ AdminServiceOnFaculty.cs
+ AdminServiceOnLocation.cs
+ AdminServiceOnTeacher.cs
+ AdminServicesOnCleaner.cs
+ AdminSeviceOnStudent.cs
+serviceLayer.cs/IAdminService/
+ IAdminServiceOnAddress.cs
  IAdminServiceOnAdmin.cs
  IAdminServiceOnCleaner.cs
  IAdminServiceOnCourse.cs
@@ -81,10 +91,11 @@ serviceLayer.cs/
  IAdminServiceOnStudent.cs
  IAdminServiceOnTeacher.cs
  IAdminServicesOnFaculty.cs
- IStudentService.cs
- ITeacherService.cs
- StudentService.cs
- TeacherService.cs
+serviceLayer.cs/
+ IStudentService/IStudentService.cs
+ ITeacherService/ITeacherService.cs
+ StudentService/StudentService.cs
+ TeacherService/TeacherService.cs
 
 [metadataReferences]
 <DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.8/ref/net10.0/
