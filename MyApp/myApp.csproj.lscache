@@ -77,6 +77,7 @@ serviceLayer.cs/
  IAdminService.cs
  IStudentService.cs
  ITeacherService.cs
+ StudentService.cs
 
 [metadataReferences]
 <DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.8/ref/net10.0/

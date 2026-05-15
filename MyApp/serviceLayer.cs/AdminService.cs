@@ -1,3 +1,8 @@
+using System.Globalization;
+using System.Linq.Expressions;
+using System.Reflection.PortableExecutable;
+using System.Security.Authentication.ExtendedProtection;
+
 public class AdminService : IAdminService
 {
 
@@ -12,7 +17,6 @@ public class AdminService : IAdminService
                 throw new Exception("Address not found");
             }
             Admin admin = new Admin(id, name, email, password, phoneNumber, address);
-            Admin.Admins.Add(admin);
             Console.WriteLine("Admin added successfully");
         }
         catch (Exception ex)
@@ -126,16 +130,16 @@ public class AdminService : IAdminService
         }
         foreach (Admin admin in Admin.Admins)
         {
-            Console.WriteLine($"ID: {admin.ID}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}, Address: {admin.Address.Street}, {admin.Address.City}, {admin.Address.State}, {admin.Address.PostalCode}");
+            Console.WriteLine($"ID: {admin.ID}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}, Address: {admin.Address.Street}, {admin.Address.City}, {admin.Address.Country}, {admin.Address.PostalCode}, Country: {admin.Address.Country}");
         }
     }
 
     //methods related to address
-    public void AddAddress(string id, string street, string city, string state, string postalCode)
+    public void AddAddress(string id, string street, string city, string state, string postalCode,string country)
     {
         try
         {
-            Address address = new Address(id, street, city, state, postalCode);
+            Address address = new Address(id, street, city, state, country, postalCode);
             Address.Addresses.Add(address);
             Console.WriteLine("Address added successfully");
         }
@@ -198,23 +202,6 @@ public class AdminService : IAdminService
             Console.WriteLine(ex.Message);
         }
     }
-    public void changeState(string id, string newState)
-    {
-        try
-        {
-            Address? address = Address.Addresses.FirstOrDefault(a => a.ID == id);
-            if (address == null)
-            {
-                throw new Exception("Address not found");
-            }
-            address.State = newState;
-            Console.WriteLine("State changed successfully");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-    }
     public void changePostalCode(string id, string postalCode)
     {
         try
@@ -232,6 +219,23 @@ public class AdminService : IAdminService
             Console.WriteLine(ex.Message);
         }
     }
+    public void changecountry(string id, string newCountry)
+    {
+        try
+        {
+            Address? address = Address.Addresses.FirstOrDefault(a => a.ID == id);
+            if (address == null)
+            {
+                throw new Exception("Address not found");
+            }
+            address.Country = newCountry;
+            Console.WriteLine("Country changed successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
 
     public void showAllAddresses()
     {
@@ -242,7 +246,7 @@ public class AdminService : IAdminService
         }
         foreach (Address address in Address.Addresses)
         {
-            Console.WriteLine($"ID: {address.ID}, Street: {address.Street}, City: {address.City}, State: {address.State}, Postal Code: {address.PostalCode}");
+            Console.WriteLine($"ID: {address.ID}, Street: {address.Street}, City: {address.City}, State: {address.Country}, Postal Code: {address.PostalCode}, Country: {address.Country}");
         }
     }
     //methods related to cleaner
@@ -431,7 +435,7 @@ public class AdminService : IAdminService
         }
         foreach (Cleaner cleaner in Cleaner.Cleaners)
         {
-            Console.WriteLine($"ID: {cleaner.ID}, Name: {cleaner.Name}, Email: {cleaner.Email}, Phone Number: {cleaner.PhoneNumber}, Address: {cleaner.Address.Street}, {cleaner.Address.City}, {cleaner.Address.State}, {cleaner.Address.PostalCode}, Salary Per Hour: {cleaner.SalaryPerHour}, Hours Of Work: {cleaner.HoursOfWork}, Location: {cleaner.Location1.Building}, {cleaner.Location1.Floor}");
+            Console.WriteLine($"ID: {cleaner.ID}, Name: {cleaner.Name}, Email: {cleaner.Email}, Phone Number: {cleaner.PhoneNumber}, Address: {cleaner.Address.Street}, {cleaner.Address.City}, {cleaner.Address.PostalCode}, Salary Per Hour: {cleaner.SalaryPerHour}, Hours Of Work: {cleaner.HoursOfWork}, Location: {cleaner.Location1.Building}, {cleaner.Location1.Floor}");
         }
     }
 
@@ -440,7 +444,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Department? department = Department.Departments.FirstOrDefault(d => d.ID1 == departmentID.ID1);
+            Department? department = Department.Departments.FirstOrDefault(d => d.ID1 == departmentID);
             if (department == null)
             {
                 throw new Exception("Department not found");
@@ -458,7 +462,7 @@ public class AdminService : IAdminService
     {
         try
         {
-            Course? course = Course.Courses.FirstOrDefault(c => c.ID == id);
+            Course? course = Course.Courses.FirstOrDefault(c => c.ID1 == id);
             if (course == null)
             {
                 throw new Exception("Course not found");
@@ -772,6 +776,7 @@ public class AdminService : IAdminService
         try
         {
             Faculty faculty=new Faculty(facultyCode,facultyName);
+            Faculty.Faculties.Add(faculty);
         }
         catch(Exception e)
         {
@@ -849,8 +854,7 @@ public class AdminService : IAdminService
             Console.WriteLine(ex.Message);
         }
     }
-    public void removeDepartmentFromFaculty(string facultyCode, Department department)
-    {
+    public void removeDepartmentFromFaculty(string facultyCode, Department department)  {
         try
         {
             Faculty? faculty = Faculty.Faculties.FirstOrDefault(f => f.ID1 == facultyCode);
@@ -1038,4 +1042,371 @@ public class AdminService : IAdminService
             Console.WriteLine(ex.Message);
         }
     }
+    public void changeStudentEmail (string ID , string newEmail)
+    {
+        try
+        {
+            Student? student = Student.Students.FirstOrDefault(s => s.ID == ID);
+            if (student == null)
+            {
+                throw new Exception("Student not found");
+            }
+            student.Email = newEmail;
+            Console.WriteLine("Student email changed successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    public void changeStudentPassword(string ID , string password)
+    {
+        try
+        {
+            Student? student = Student.Students.FirstOrDefault(s=> s.ID==ID); 
+            if (student == null)
+            {
+                throw new Exception ("student not found");
+            }
+            student.Password= password; 
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
+    public void changeStudentAddress(string addressID,string studentID)
+    {
+        try {
+            Student? student = Student.Students.FirstOrDefault(s => s.ID == studentID);
+            if (student == null)
+            {
+                throw new Exception("Student not found");
+            }
+            Address? address = Address.Addresses.FirstOrDefault(a => a.ID == addressID);
+            if (address == null)
+            {
+                throw new Exception("Address not found");
+            }
+            student.Address = address;
+            Console.WriteLine("Student address changed successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+      
+    }
+
+    public void changeStudentGPA(string studentID,double newGPA)
+    {
+        try
+        {
+            Student? student = Student.Students.FirstOrDefault(s=>s.ID==studentID);
+            if (student == null)
+            {
+                throw new Exception("student not found ");
+            }
+            student.GPA1=newGPA;
+            Console.WriteLine("Student GPA changed successfully");
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+        }
+
+    }
+
+    public void changeStudentCourses(string studentID , List<Course> courses)
+    {
+        try { 
+        Student? student = Student.Students.FirstOrDefault(s => s.ID == studentID);
+        if (student == null)
+            {
+                throw new Exception("Student not found");
+            }
+            student.Courses = courses;
+            Console.WriteLine("Student courses changed successfully");
+    }
+    catch(Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
+    public void changeStudentDepartment(string studentID, string departmentID)
+    {
+        try
+        {
+            Student? student = Student.Students.FirstOrDefault(s => s.ID == studentID);
+            if (student == null)
+            {
+                throw new Exception("Student not found");
+            }
+            Department? department = Department.Departments.FirstOrDefault(d => d.ID1 == departmentID);
+            if (department == null)
+            {
+                throw new Exception("Department not found");
+            }
+            student.Department = department;
+            Console.WriteLine("Student department changed successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    public void changeStudentGrades(string studentID, List<string> newGrades)
+    {
+        try
+        {
+            Student? student = Student.Students.FirstOrDefault(s => s.ID == studentID);
+            if (student == null)
+            {
+                throw new Exception("Student not found");
+            }
+            student.Grades = newGrades;
+            Console.WriteLine("Student grades changed successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }}
+
+    public void showAllStudents()
+    {
+        if (Student.Students.Count == 0)
+        {
+            Console.WriteLine("No students found");
+            return;
+        }
+        foreach (Student student in Student.Students)
+        {
+            Console.WriteLine($"ID: {student.ID}, Name: {student.Name}, Email: {student.Email}, Phone Number: {student.PhoneNumber}, Address: {student.Address.Street}, {student.Address.City}, {student.Address.Country}, {student.Address.PostalCode}, GPA: {student.GPA1}, Department: {student.Department.name1}, Courses: {string.Join(", ", student.Courses.Select(c => c.Name))}, Grades: {string.Join(", ", student.Grades)}");
+        }
+    }
+
+    //methods related to teacher 
+    public void addTeacher (string id, string name, string email, string password, string phoneNumber, string addressID, double salaryPerHour, string hoursOfWork, string officeNumber, string role)
+    {
+        try
+        {
+            Address? address= Address.Addresses.FirstOrDefault(s=>s.ID==addressID);
+            if (address == null)
+            {
+                throw new Exception ("Address not found");
+            }
+             Teacher teacher = new Teacher(id,name,email,password,phoneNumber,address,salaryPerHour,hoursOfWork,officeNumber,role);
+            Teacher.Teachers.Add(teacher);
+            Console.WriteLine("Teacher added successfully");
+            
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e.Message);   
+        }
+    }
+
+    public void removeTeacher (string teacherID)
+    {
+    try
+        {
+            Teacher? teacher= Teacher.Teachers.FirstOrDefault(t=>t.ID==teacherID);
+            if (teacher == null)
+            {
+                throw new Exception("Teacher not found");
+            }
+            Teacher.Teachers.Remove(teacher);
+            teacher = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            Console.WriteLine("Teacher removed successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
+    public void changeTeacherPhoneNumber(string studentID, string phoneNumber)
+    {
+        try
+        {
+            Student? student=Student.Students.FirstOrDefault(s=>s.ID==studentID);
+            if (student == null)
+            {
+                throw new Exception("Student not found");
+
+            }
+            student.PhoneNumber= phoneNumber;
+            Console.WriteLine("Student phone number changed successfully");
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
+    public void changeTeacherEmail(string teacherID, string email)
+    {
+        try
+        {
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            if (teacher == null)
+            {
+                throw new Exception("Teacher not found");
+            }
+            teacher.Email = email;
+            Console.WriteLine("Teacher email changed successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+    public void changeTeacherPassword(string teacherID, string password)
+    {
+        try
+        {
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            if (teacher == null)
+            {
+                throw new Exception("Teacher not found");
+            }
+            teacher.Password = password;
+            Console.WriteLine("Teacher password changed successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }}
+
+        public void changeTeacherAddress(string tacherId,string addressID)
+    {
+        try
+        {
+            Student? student = Student.Students.FirstOrDefault(s => s.ID == tacherId);
+            if (student == null)
+            {
+                throw new Exception("Student not found");
+            }
+            Address? address = Address.Addresses.FirstOrDefault(a => a.ID == addressID);
+            if (address == null)
+            {
+                throw new Exception("Address not found");
+            }
+            student.Address = address;
+            Console.WriteLine("Student address changed successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+     public void changeTeacherSalary(string teacherID, double salary)
+    {
+        try
+        {
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            if (teacher == null)
+            {
+                throw new Exception("Teacher not found");
+            }
+            teacher.SalaryPerHour = salary;
+            Console.WriteLine("Teacher salary changed successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+    public void changeTeacherHoursOfWork(string teacherID, string hoursOfWork)
+    {
+        try
+        {
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            if (teacher == null)
+            {
+                throw new Exception("Teacher not found");
+            }
+            teacher.HoursOfWork = hoursOfWork;
+            Console.WriteLine("Teacher hours of work changed successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
+    public void changeTeacherCourses(string teacherID, List<Course> courses)
+    {
+        try
+        {
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            if (teacher == null)
+            {
+                throw new Exception("Teacher not found");
+            }
+            teacher.Courses = courses;
+            Console.WriteLine("Teacher courses changed successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+    public void changeTeacherOfficeNumber(string teacherID, string officeNumber)
+    {
+        try
+        {
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            if (teacher == null)
+            {
+                throw new Exception("Teacher not found");
+            }
+            teacher.OfficeNumber = officeNumber;
+            Console.WriteLine("Teacher office number changed successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+    public void changeTeacherRole(string teacherID, string role)
+    {
+        try
+        {
+            Teacher? teacher = Teacher.Teachers.FirstOrDefault(t => t.ID == teacherID);
+            if (teacher == null)
+            {
+                throw new Exception("Teacher not found");
+            }
+            teacher.Role = role;
+            Console.WriteLine("Teacher role changed successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }}
+    public void ShowAllTeachers()
+    {
+        if (Teacher.Teachers.Count == 0)
+        {
+            Console.WriteLine("No teachers found");
+            return;
+        }
+        foreach (Teacher teacher in Teacher.Teachers)
+        {
+            Console.WriteLine($"ID: {teacher.ID}, Name: {teacher.Name}, Email: {teacher.Email}, Phone Number: {teacher.PhoneNumber}, Address: {teacher.Address.Street}, {teacher.Address.City}, {teacher.Address.Country}, {teacher.Address.PostalCode}, Salary Per Hour: {teacher.SalaryPerHour}, Hours Of Work: {teacher.HoursOfWork}, Office Number: {teacher.OfficeNumber}, Role: {teacher.Role}");
+        }
+    }
+
+    public void showSelfData(Admin admin)//parameter is the admin that is logged in and want to see his data
+    {
+        Console.WriteLine($"ID: {admin.ID}, Name: {admin.Name}, Email: {admin.Email}, Phone Number: {admin.PhoneNumber}, Address: {admin.Address.Street}, {admin.Address.City}, {admin.Address.Country}, {admin.Address.PostalCode}");
+    }
 }
+

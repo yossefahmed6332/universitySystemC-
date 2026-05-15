@@ -10,11 +10,11 @@ public interface IAdminService
     public void showAllAdmins();
     
     //functions related to Address 
-    public void AddAddress(string id, string street, string city, string state, string postalCode);
+    public void AddAddress(string id, string street, string city, string state, string postalCode,string country);
     public void RemoveAddress(string id);
     public void changeStreet(string id, string newStreet);
     public void changeCity(string id, string newCity);
-    public void changeState(string id, string newState);
+    public void changecountry(string id, string newCountry);
     public void changePostalCode(string id, string postalCode);
     
     public void showAllAddresses();
@@ -79,13 +79,13 @@ public interface IAdminService
     public void changeStudentAddress(string id, string newAddressID);
     public void changeStudentGPA(string id, double newGPA);
     public void changeStudentCourses(string id, List<Course> newCourses);
-    public void changeStudentDepartment(string id, Department newDepartment);
+    public void changeStudentDepartment(string id, string DepartmentID);
     public void changeStudentGrades(string id, List<string> newGrades);
     public void showAllStudents();
 
     //function related to teacher
-    public void AddTeacher(string id, string name, string email, string password, string phoneNumber, string addressID, double salaryPerHour, string hoursOfWork, List<Course> courses, string officeNumber, string role);
-    public void RemoveTeacher(string id);
+    public void addTeacher(string id, string name, string email, string password, string phoneNumber, string addressID, double salaryPerHour, string hoursOfWork, string officeNumber, string role);
+    public void removeTeacher(string id);
     public void changeTeacherPhoneNumber(string id, string newPhoneNumber);
     public void changeTeacherEmail(string id, string newEmail);
     public void changeTeacherPassword(string id, string newPassword);
@@ -96,6 +96,7 @@ public interface IAdminService
     public void changeTeacherOfficeNumber(string id, string newOfficeNumber);
     public void changeTeacherRole(string id, string newRole);
     public void ShowAllTeachers();
+    public void showSelfData(Admin admin);
 
 
 

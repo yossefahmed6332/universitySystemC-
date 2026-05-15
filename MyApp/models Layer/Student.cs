@@ -38,6 +38,7 @@ public class Student: User
     public string Email { get => email; set => email = value; }
     public string Password { get => password; set => password = value; }
     public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
+    public Address Address { get => address; set => address = value; }
 
     public static List<Student> Students { get => students; set => students = value; }
     

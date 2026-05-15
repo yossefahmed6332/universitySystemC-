@@ -10,6 +10,7 @@ public class Teacher: Employee
     public Teacher(string id, string name, string email, string password, string phoneNumber, Address address, double salaryPerHour, string hoursOfWork,  string officeNumber, string role)
         : base(id, name, email, password, phoneNumber, address, salaryPerHour, hoursOfWork)
     {
+        courses = new List<Course>();
         this.officeNumber = officeNumber;
         this.role = role;
         teachers.Add(this);
