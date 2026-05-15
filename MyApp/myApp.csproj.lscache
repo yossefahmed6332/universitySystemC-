@@ -73,7 +73,14 @@ obj/Debug/net10.0/
 Program.cs
 serviceLayer.cs/
  AdminService.cs
- IAdminService.cs
+ IAdminServiceOnAdmin.cs
+ IAdminServiceOnCleaner.cs
+ IAdminServiceOnCourse.cs
+ IAdminServiceOnDepartment.cs
+ IAdminServiceOnLocation.cs
+ IAdminServiceOnStudent.cs
+ IAdminServiceOnTeacher.cs
+ IAdminServicesOnFaculty.cs
  IStudentService.cs
  ITeacherService.cs
  StudentService.cs
