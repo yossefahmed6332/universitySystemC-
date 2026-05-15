@@ -4,7 +4,7 @@ public class StudentService : IStudentService
     {
         try
         {
-            Course course = Course.Courses.FirstOrDefault(c => c.ID1 == courseCode);
+            Course? course = Course.Courses.FirstOrDefault(c => c.ID1 == courseCode);
             if (course == null)
             {
                 throw new Exception("Course not found");
@@ -22,7 +22,7 @@ public class StudentService : IStudentService
     {
         try
         {
-            Course course = Course.Courses.FirstOrDefault(c => c.ID1 == courseCode);
+            Course? course = Course.Courses.FirstOrDefault(c => c.ID1 == courseCode);
             if (course == null)
             {
                 throw new Exception("Course not found");
