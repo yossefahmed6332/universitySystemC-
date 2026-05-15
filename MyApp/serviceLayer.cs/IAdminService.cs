@@ -15,7 +15,7 @@ public interface IAdminService
     public void changeStreet(string id, string newStreet);
     public void changeCity(string id, string newCity);
     public void changeState(string id, string newState);
-    public void changeZipCode(string id, string postalCode);
+    public void changePostalCode(string id, string postalCode);
     
     public void showAllAddresses();
 
@@ -32,35 +32,35 @@ public interface IAdminService
     public void showAllCleaners();
 
     //function related to course 
-    public void AddCourse(string courseCode, string courseName, int creditHours, string department);
-    public void RemoveCourse(string courseCode);
-    public void changeCourseName(string courseCode, string newCourseName);
-    public void changeCourseCreditHours(string courseCode, int newCreditHours);
-    public void changeCourseDepartment(string courseCode, string newDepartment);
+    public void addCourse(string ID, string name, int creditHours, string department);
+    public void removeCourse(string ID);
+    public void changeCourseName(string ID, string newName);
+    public void changeCourseCreditHours(string ID, int newCreditHours);
+    public void changeCourseDepartment(string ID, string newDepartment);
     public void showAllCourses();
 
     //function related to department
-    public void AddDepartment(string departmentCode, string departmentName);
-    public void RemoveDepartment(string departmentCode);
+    public void addDepartment(string departmentCode, string departmentName);
+    public void removeDepartment(string departmentCode);
     public void changeDepartmentName(string departmentCode, string newDepartmentName);
     public void changeDepartmentCourses(string departmentCode, List<Course> newCourses);
     public void changeDepartmentTeachers(string departmentCode, List<Teacher> newTeachers);
-    public void addTeacherToDepartment(string departmentCode, Teacher teacher);
-    public void removeTeacherFromDepartment(string departmentCode, Teacher teacher);
-    public void addCourseToDepartment(string departmentCode, Course course);
-    public void removeCourseFromDepartment(string departmentCode, Course course);
+    public void addTeacherToDepartment(string departmentCode, string teacherID);
+    public void removeTeacherFromDepartment(string departmentCode, string teacherID);
+    public void addCourseToDepartment(string departmentCode, string courseID);
+    public void removeCourseFromDepartment(string departmentCode, string courseID);
     public void showAllTeachers();
     public void showAllCoursesInDepartment(string departmentCode);
     public void showAllDepartments();
 
     //function related to faculty
-    public void AddFaculty(string facultyCode, string facultyName, List<Department> departments);
-    public void RemoveFaculty(string facultyCode);
+    public void addFaculty(string facultyCode, string facultyName);
+    public void removeFaculty(string facultyCode);
     public void changeFacultyName(string facultyCode, string newFacultyName);
     public void changeFacultyDepartments(string facultyCode, List<Department> newDepartments);
     public void addDepartmentToFaculty(string facultyCode, Department department);
     public void removeDepartmentFromFaculty(string facultyCode, Department department);
-    public void showAllFaculties();
+    public void showAllFaculties(string ID);
 
     //function related to location
     public void AddLocation(string locationCode, string locationName, string locationType);
@@ -71,8 +71,8 @@ public interface IAdminService
 
 
     //function related to student 
-    public void AddStudent(string id, string name, string email, string password, string phoneNumber, Address address, double GPA, List<Course> courses, Department department, List<string> grades);
-    public void RemoveStudent(string id);
+    public void addStudent(string id, string name, string email, string password, string phoneNumber, string departmentID, string addressID);
+    public void removeStudent(string id);
     public void changeStudentPhoneNumber(string id, string newPhoneNumber);
     public void changeStudentEmail(string id, string newEmail);
     public void changeStudentPassword(string id, string newPassword);

@@ -28,6 +28,7 @@ public class Address
     public string BuildingNumber { get => buildingNumber; set => buildingNumber = value; }
     public string PostalCode { get => postalCode; set => postalCode = value; }
     public string ID{get=>addressID; set=>addressID=value;}
+    
 
     public static List<Address> Addresses { get => addresses; set => addresses = value; }
 

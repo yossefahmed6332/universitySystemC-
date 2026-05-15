@@ -1,7 +1,7 @@
 public class Department
 {
-    private string departmentName;
-    private string departmentCode;
+    private string name;
+    private string ID;
 
     private List<Course> courses;
     private List<Teacher> teachers;
@@ -10,17 +10,17 @@ public class Department
 
 
     //constructor
-    public Department(string departmentName, string departmentCode)
+    public Department(string name, string ID)
     {
-        this.departmentName = departmentName;
-        this.departmentCode = departmentCode;
+        this.name = name;
+        this.ID = ID;
         this.courses = new List<Course>();
         this.teachers = new List<Teacher>();
         departments.Add(this);
     }
     //setters and getters
-    public string DepartmentName { get => departmentName; set => departmentName = value; }
-    public string DepartmentCode { get => departmentCode; set => departmentCode = value; }
+    public string name1 { get => name; set => name = value; }
+    public string ID1 { get => ID; set => ID = value; }
     public List<Course> Courses { get => courses; set => courses = value; }
     public List<Teacher> Teachers { get => teachers; set => teachers = value; }
     public static List<Department> Departments { get => departments; set => departments = value; }

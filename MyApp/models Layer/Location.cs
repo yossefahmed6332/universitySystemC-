@@ -2,12 +2,15 @@ public class Location
 {
     private string building ; 
     private string floor ;
+
+    private string ID; 
     public static List <Location> locations = new List<Location>();
 
-    public Location(string building, string floor)
+    public Location(string building, string floor, string ID)
     {
         this.building = building;
         this.floor = floor;
+        this.ID = ID;
         locations.Add(this);
     }
 
@@ -15,4 +18,5 @@ public class Location
     public string Floor { get => floor; set => floor = value; }
 
      public static List<Location> Locations { get => locations; set => locations = value; }
+    public string ID1 { get => ID; set => ID = value; }
 }

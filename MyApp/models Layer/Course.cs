@@ -1,23 +1,23 @@
 public class Course
 {
-    private string courseName;
-    private string courseCode;
+    private string name;
+    private string ID;
     private int creditHours;
     private Department department;
     private static List <Course> courses = new List<Course>();
 
     //constructor
-    public Course(string courseName, string courseCode, int creditHours, Department department)
+    public Course(string name, string ID, int creditHours, Department department)
     {
-        this.courseName = courseName;
-        this.courseCode = courseCode;
+        this.name = name;
+        this.ID = ID;
         this.creditHours = creditHours;
         this.department = department;
         courses.Add(this);
     }
     //setters and getters
-    public string CourseName { get => courseName; set => courseName = value; }
-    public string CourseCode { get => courseCode; set => courseCode = value; }
+    public string Name { get => name; set => name = value; }
+    public string ID1 { get => ID; set => ID = value; }
     public int CreditHours { get => creditHours; set => creditHours = value; }
     public Department Department { get => department; set => department = value; }
 

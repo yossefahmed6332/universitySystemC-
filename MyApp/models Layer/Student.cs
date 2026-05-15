@@ -11,13 +11,13 @@ public class Student: User
 
     private static List <Student> students = new List<Student>();
     //constructor
-    public Student(string id, string name, string email, string password, string phoneNumber, Address address, double GPA, List<Course> courses, Department department, List<string> grades)
+    public Student(string id, string name, string email, string password, string phoneNumber, Address address, Department department)
         : base(id, name, email, password, phoneNumber, address)
     {
-        this.GPA = GPA;
-        this.courses = courses;
+        this.GPA = 0.0;
+        this.courses = new List<Course>();
         this.department = department;
-        this.grades = grades;
+        this.grades = new List<string>();
         students.Add(this);
     }
     //setters and getters
@@ -33,6 +33,12 @@ public class Student: User
     public List<string> Grades { 
         get => grades; set => grades = value;
          }
+    public string ID { get => ID; set => ID = value; }
+    public string Name { get => name; set => name = value; }
+    public string Email { get => email; set => email = value; }
+    public string Password { get => password; set => password = value; }
+    public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
+
     public static List<Student> Students { get => students; set => students = value; }
     
 }

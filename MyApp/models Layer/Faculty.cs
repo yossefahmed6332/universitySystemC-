@@ -1,7 +1,7 @@
 public class Faculty
 {
-    private string facultyName;
-    private string facultyCode;
+    private string name;
+    private string ID;
 
     private List<Department> departments;
 
@@ -11,15 +11,15 @@ public class Faculty
     //constructor
     public Faculty(string facultyName, string facultyCode)
     {
-        this.facultyName = facultyName;
-        this.facultyCode = facultyCode;
+        this.name = facultyName;
+        this.ID = facultyCode;
         this.departments = new List<Department>();
         faculties.Add(this);
     }
 
     //setters and getters
-    public string FacultyName { get => facultyName; set => facultyName = value; }
-    public string FacultyCode { get => facultyCode; set => facultyCode = value; }
+    public string Name { get => name; set => name = value; }
+    public string ID1 { get => ID; set => ID = value; }
     public List<Department> Departments { get => departments; set => departments = value; }
 
     public static List<Faculty> Faculties { get => faculties; set => faculties = value; }

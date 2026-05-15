@@ -27,15 +27,15 @@ public class Teacher: Employee
          get => role; set => role = value;
           }
 
-    //add and remove courses
-    public void addCourse(Course course)
-    {
-        courses.Add(course);
-    }
-    public void removeCourse (Course course)
-    {
-        courses.Remove(course);
-    }
+    public string ID { get => ID; set => ID = value; }
+    public string Name { get => name; set => name = value; }
+    public string Email { get => email; set => email = value; }
+    public string Password { get => password; set => password = value; }
+    public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
+    public Address Address { get => address; set => address = value; }
+    public double SalaryPerHour { get => salaryPerHour; set => salaryPerHour = value; }
+    public string HoursOfWork { get => hoursOfWork; set => hoursOfWork = value; }
+    
     public static List<Teacher> Teachers { get => teachers; set => teachers = value; }
 
 
